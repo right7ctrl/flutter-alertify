@@ -23,6 +23,7 @@ Beautiful flutter alerts!
 | Property | Action |
 ---------------------
 | alertType | Pick your alert type such as success, error, warning, info and none |
+--------------------
 | content | some content to show user |
 | title | | The title that shown to user |
 | buttonText | | The button text |
