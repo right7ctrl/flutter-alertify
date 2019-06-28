@@ -8,7 +8,7 @@ A collection of beautiful animated dialogs.
 
 ```yaml
 dependencies:
-  alertify: "^0.0.1"
+  alertify: "^0.0.2"
 ```
 
 ### ⚡️ Import
