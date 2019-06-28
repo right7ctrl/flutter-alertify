@@ -33,7 +33,7 @@ import 'package:alertify/alertify.dart';
 
 ### ❗️ Note
 
--
+- Pull requests are welcomed
 
 ## ⭐️ License
 
