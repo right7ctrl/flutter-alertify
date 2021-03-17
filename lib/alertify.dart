@@ -15,6 +15,7 @@ class Alertify {
   final String buttonText;
   final AnimationType animationType;
   final Color? barrierColor;
+  final Function? onDismiss;
 
   Alertify({
     required this.context,
@@ -25,10 +26,11 @@ class Alertify {
     required this.buttonText,
     this.animationType = AnimationType.outToIn,
     this.barrierColor,
+    this.onDismiss,
   });
 
-  void show() {
-    showGeneralDialog(
+  void show() async {
+    await showGeneralDialog(
         barrierDismissible: isDismissible,
         context: context,
         pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
@@ -45,6 +47,7 @@ class Alertify {
             ) =>
             _buildAnimation(animation,secondaryAnimation, child)
     );
+    if (onDismiss != null) onDismiss!();
   }
 
   Widget _buildDialog() {
