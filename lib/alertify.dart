@@ -15,11 +15,19 @@ class Alertify {
   final String buttonText;
   final AnimationType animationType;
 
-  Alertify({@required this.context, @required this.isDismissible, this.alertType, @required this.content, this.title, this.buttonText, this.animationType});
+  Alertify({
+    required this.context,
+    required this.isDismissible,
+    required this.alertType,
+    required this.content,
+    required this.title,
+    required this.buttonText,
+    this.animationType = AnimationType.outToIn,
+  });
 
   void show() {
     showGeneralDialog(
-        barrierDismissible: true,
+        barrierDismissible: isDismissible,
         context: context,
         pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
           return _buildDialog();
