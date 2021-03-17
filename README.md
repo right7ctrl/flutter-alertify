@@ -27,7 +27,8 @@ import 'package:alertify/alertify.dart';
   title: 'Alertify',
   alertType: AlertifyType.success,
   buttonText: 'OK',
-  animationType: AnimationType.outToIn
+  animationType: AnimationType.outToIn,
+  barrierColor: Colors.black.withOpacity(0.5),
 ).show();
 ```
 

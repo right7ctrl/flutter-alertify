@@ -14,6 +14,7 @@ class Alertify {
   final String title;
   final String buttonText;
   final AnimationType animationType;
+  final Color? barrierColor;
 
   Alertify({
     required this.context,
@@ -23,6 +24,7 @@ class Alertify {
     required this.title,
     required this.buttonText,
     this.animationType = AnimationType.outToIn,
+    this.barrierColor,
   });
 
   void show() {
@@ -33,7 +35,7 @@ class Alertify {
           return _buildDialog();
         },
         barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        barrierColor: Colors.grey.withOpacity(0.2),
+        barrierColor: barrierColor == null ? Colors.grey.withOpacity(0.2) : barrierColor!,
         transitionDuration: Duration(milliseconds: 250),
         transitionBuilder: (
             BuildContext context,
