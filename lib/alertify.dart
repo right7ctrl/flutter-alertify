@@ -14,18 +14,30 @@ class Alertify {
   final String title;
   final String buttonText;
   final AnimationType animationType;
+  final Color? barrierColor;
+  final Function? onDismiss;
 
-  Alertify({@required this.context, @required this.isDismissible, this.alertType, @required this.content, this.title, this.buttonText, this.animationType});
+  Alertify({
+    required this.context,
+    required this.isDismissible,
+    required this.alertType,
+    required this.content,
+    required this.title,
+    required this.buttonText,
+    this.animationType = AnimationType.outToIn,
+    this.barrierColor,
+    this.onDismiss,
+  });
 
-  void show() {
-    showGeneralDialog(
-        barrierDismissible: true,
+  void show() async {
+    await showGeneralDialog(
+        barrierDismissible: isDismissible,
         context: context,
         pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
           return _buildDialog();
         },
         barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        barrierColor: Colors.grey.withOpacity(0.2),
+        barrierColor: barrierColor == null ? Colors.grey.withOpacity(0.2) : barrierColor!,
         transitionDuration: Duration(milliseconds: 250),
         transitionBuilder: (
             BuildContext context,
@@ -35,6 +47,7 @@ class Alertify {
             ) =>
             _buildAnimation(animation,secondaryAnimation, child)
     );
+    if (onDismiss != null) onDismiss!();
   }
 
   Widget _buildDialog() {
